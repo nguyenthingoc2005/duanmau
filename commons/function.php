@@ -37,3 +37,9 @@ function deleteFile($file){
         unlink($pathDelete);
     }
 }
+function checkAdmin(){
+    if(empty($_SESSION['islogin']) || $_SESSION['role'] !=1){
+        header('Location: ' .BASE_URL .'?mode=auth&act=login');
+        exit();
+    }
+}

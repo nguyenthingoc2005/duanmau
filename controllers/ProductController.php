@@ -69,7 +69,7 @@ class ProductController
                     deleteFile($_POST['img_old']);
                 }
             }
-            $this->modelProduct->updateProduct($id,$pro_name,$price,$quantity,$sale,$status,$cate_id,$url);
+            $this->modelProduct->updateProduct($id, $pro_name, $price, $cate_id, $quantity, $sale, $status, $url);
             header("Location: ?mode=admin&act=list_product");
         }else{
             $id = $_GET["id"] ?? null;

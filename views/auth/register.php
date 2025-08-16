@@ -96,7 +96,7 @@
 <body>
     <div class="register-container">
         <h2>Đăng ký</h2>
-        <?php if(!empty($error))?>
+        <?php if(!empty($error)):?>
         <p><?= $error ?></p>
         <?php endif; ?>
         <form action="" method="post">

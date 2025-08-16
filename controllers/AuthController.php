@@ -63,7 +63,7 @@ class AuthController
             if($this->cartModel->isCartUserWhereIdUser($user['id'])=== false){
                 $this->cartModel->createCart($user['id']);
             }
-            header('Location ' .BASE_URL.);
+            header('Location ' .BASE_URL);
         }else{
             require './views/auth/login.php';
         }
