@@ -67,7 +67,7 @@ $images = [
         slideIndex++;
         if (slideIndex > slides.length) {slideIndex = 1}    
         slides[slideIndex-1].style.display = "block";  
-        setTimeout(showSlides, 2000); // Tự động chuyển đổi sau 3 giây
+        setTimeout(showSlides, 2000); // Tự động chuyển đổi sau 2 giây
     }
 </script>
 
