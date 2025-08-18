@@ -10,7 +10,7 @@ class AuthController
     }
     public function register()
     {
-        if ($_SERVER["REQUEST_METHOD"] == "POST"){
+        if ($_SERVER["REQUEST_METHOD"] === "POST"){
             $name = trim($_POST["username"] ?? '');
             $email = trim($_POST["email"] ?? '');
             $password = trim($_POST["password"] ?? '');
@@ -20,7 +20,7 @@ class AuthController
                 require './views/auth/register.php';
                 return;
             }
-            if($password != $confirm){
+            if($password !== $confirm){
                 $error = "Mật khẩu không khớp";
                 require './views/auth/register.php';
                 return;
@@ -43,7 +43,7 @@ class AuthController
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST'){
             $email = trim($_POST['email'] ?? '');
-            $password = trim($_POST['password$password'] ?? '');
+            $password = trim($_POST['password'] ?? '');
             if(empty($email) || empty($password)){
                 $error = "Vui lòng điền đầy đủ thông tin.";
                 require './views/auth/login.php';
@@ -63,7 +63,7 @@ class AuthController
             if($this->cartModel->isCartUserWhereIdUser($user['id'])=== false){
                 $this->cartModel->createCart($user['id']);
             }
-            header('Location ' .BASE_URL);
+            header('Location: ' .BASE_URL);
         }else{
             require './views/auth/login.php';
         }
@@ -71,6 +71,6 @@ class AuthController
     public function logout()
     {
         session_destroy();
-        header('Location'.BASE_URL.'?act=login');
+        header('Location: '.BASE_URL.'?act=login');
     }
 }

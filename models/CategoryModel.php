@@ -10,6 +10,7 @@ class CategoryModel
     {
         $sql = "SELECT * FROM `category`";
         $stmt = $this->conn->prepare($sql);
+        $stmt->execute();
         $data = $stmt->fetchAll();
         return $data;
     }
@@ -24,11 +25,11 @@ class CategoryModel
     {
         $sql = "UPDATE category SET cat_name = :name WHERE id = :id";
         $stmt = $this->conn->prepare($sql);
-        $stmt->bindValue("name", $name, PDO::PARAM_INT);
+        $stmt->bindValue("name", $name, PDO::PARAM_STR);
         $stmt->bindValue("id", (int)$id, PDO::PARAM_INT);
         return $stmt->execute();
     }
-    public function checkProductId($id)
+    public function checkProductById($id)
     {
         $sql = "SELECT * FROM product WHERE cate_id = $id";
         $stmt = $this->conn->query($sql);

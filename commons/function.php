@@ -37,6 +37,11 @@ function deleteFile($file){
         unlink($pathDelete);
     }
 }
+function views($views,$data = [])
+{
+    extract($data);
+    require_once PATH_ROOT . "/$views.php";
+}
 function checkAdmin(){
     if(empty($_SESSION['islogin']) || $_SESSION['role'] !=1){
         header('Location: ' .BASE_URL .'?mode=auth&act=login');

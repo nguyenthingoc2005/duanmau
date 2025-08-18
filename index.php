@@ -11,11 +11,13 @@ require_once './controllers/ProductController.php';
 require_once './controllers/DashboardController.php';
 require_once './controllers/CategoryController.php';
 require_once './controllers/AuthController.php';
+require_once './controllers/HomeController.php';
 
 // Require toàn bộ file Models
 require_once './models/ProductModel.php';
 require_once './models/AuthModel.php';
 require_once './models/CategoryModel.php';
+require_once './models/CartModel.php';
 
 // Route
 if(isset($_GET['mode']) && $_GET['mode'] == 'admin') {

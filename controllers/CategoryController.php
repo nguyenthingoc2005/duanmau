@@ -1,4 +1,5 @@
 <?php
+// có class chứa các function thực thi xử lý logic 
 class CategoryController
 {
     public $modelCategory;
@@ -9,67 +10,81 @@ class CategoryController
     public function showCategory()
     {
         $category = $this->modelCategory->danhsach();
-        views('views/admin/category/list_category',['category' => $category]);
+        // var_dump($category);
+        // die();
+        views('views/admin/category/list_category', ['category' => $category]);
     }
+
     public function AddControllerView()
     {
-        if($_SERVER['REQUESST_METHOD'] == 'POST'){
+        //Kiểm tra phương thức của url
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            // echo "khong vui";
             print_r($_POST);
-            if(!empty($_POST['cat_name'])){
+
+            if (!empty($_POST['cat_name'])) {
                 $cat_name = trim($_POST['cat_name']);
                 $this->modelCategory->addCategory($cat_name);
                 header('Location: ?mode=admin&act=category');
-            }else{
+            } else {
                 $err = 'Thêm danh mục không thành công';
                 require_once './views/category/addcategory.php';
             }
-        }else{
-            $title = 'Thêm danh mục';
-            require_once './views/category/addcategory.php';
+        } else {
+            $title = "Thêm danh mục";
+            require_once './views/admin/category/addcategory.php';
         }
     }
-    public function haldleEditController()
+
+    public function haldleEditCategory()
     {
         $id = $_GET['id'] ?? null;
-        if($id){
+
+        if ($id) {
             $category = $this->modelCategory->getOneCategoryById($id);
-            views('views/admin/category/edit_category.php');
+            views('views/admin/category/edit_category', ['category' => $category]);
             die();
-        }else{
-            echo 'Không tìm thấy danh mục';
+        } else {
+            echo "Khong tim thay danh muc";
         }
     }
     public function haldleDeleteCategory()
     {
         $id = $_GET['id'] ?? null;
-        if($id){
-            $check = $this->modelCategory->checkProductById($id);
-            if($check === false){
-                $cate = $this->modelCategory->deleteCategory($id);
-            }else{
-                echo 'Không thể xóa danh mục';
-                exit();
-            }
-            header('Location: ' .BASE_URL .'?mode=admin&act=');
-            exit();
-        }else{
-            echo 'Không tìm thấy danh mục';
-        }
-    }
-    public function haldleUpdateProduct()
-    {
-        $id = $_GET['id'] ?? null;
-        $cat_name = $_POST['cat_name'];
-        if(empty($cat_name)){
-            echo "Không có tên";
-        }
-        if($id){
-            $category = $this->modelCategory->updateCategory($id, $cat_name);
-            header("Location: " .BASE_URL ."?mode=admin&act=category");
-            exit();
-        }else{
-            echo "Không tìm thấy danh mục";
-        }
-    }
 
+        if ($id) {
+            // var_dump($this->modelCategory->checkProductById($id));
+            $check = $this->modelCategory->checkProductById($id); // Kiểm tra xem là có sản phẩm nào thuộc danh mục này không
+            if ($check === false) { // Nếu không có sản phẩm nào thuộc danh mục đấy, thì mới cho xóa
+                $category = $this->modelCategory->deleteCategory($id);
+            } else { // Còn có sản phẩm thuộc danh mục thì không cho xóa
+                echo "Không thể xóa danh mục";
+                exit;
+            }
+
+            header('Location: ' . BASE_URL . '?mode=admin&act=category');
+            exit;
+        } else {
+            echo "Khong tim thay danh muc";
+        }
+    }
+    public function haldleUpdateCategory()
+    {
+
+        $id = $_POST['id'] ?? null;
+        $cat_name = $_POST['cat_name'];
+        // checkLoi($cat_name);
+        if (empty($cat_name)) {
+            echo "Ko có name";
+        }
+
+        if ($id) {
+            $category = $this->modelCategory->updateCategory($id, $cat_name);
+            // checkLoi($category);
+            header('Location: ' . BASE_URL . '?mode=admin&act=category');
+            exit;
+        } else {
+            echo "Khong tim thay danh muc";
+        }
+    }
 }

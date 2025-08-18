@@ -19,10 +19,10 @@ class AuthModel
     }
     public function checkEmailExists($email)
     {
-        $sql= "SELECT * FROM user WHERE email = :email";
+        $sql= "SELECT * FROM users WHERE email = :email";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute(["email"=> $email]);
-        $user = $stmt->fetch();
+        return $stmt->fetch();
     }
     public function createUser($name,$email,$password)
     {
