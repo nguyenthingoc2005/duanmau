@@ -6,7 +6,7 @@ $msg = $_SESSION['cart'] ?? null;
 <header class="main-header">
     <div class="container flex-container">
         <div class="logo">
-            <a href="<?= BASE_URL ?>">MORNING FRUIT</a>
+            <a href="<?= BASE_URL ?>">TN SHOP</a>
         </div>
         <div class="nav-search-container flex-container">
             <nav class="main-nav">
