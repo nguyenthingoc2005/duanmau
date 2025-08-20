@@ -86,7 +86,7 @@ class ProductController
             require_once './views/admin/product/edit_product.php';
         }
     }
-    public function DeteleProduct($id)
+    public function DeleteProduct($id)
     {
         $product = $this->modelProduct->getOneProductById($id);
         if ($product && $product['img']) {

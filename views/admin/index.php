@@ -25,7 +25,7 @@ match ($act) {
     'detail_product' => (new ProductController())->Productdetail($_GET['id']),
     'add_product' => (new ProductController())->Addproduct(),
     'edit_product' => (new ProductController())->Editproduct(),
-    'delete_product' => (new ProductController())->DeteleProduct($_GET['id']),
+    'delete_product' => (new ProductController())->DeleteProduct($_GET['id']),
 };
 ?>
 <!-- haldle -->

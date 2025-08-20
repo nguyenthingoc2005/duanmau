@@ -69,6 +69,7 @@ $images = [
         slides[slideIndex-1].style.display = "block";  
         setTimeout(showSlides, 2000); // Tự động chuyển đổi sau 2 giây
     }
+    
 </script>
 
 </body>
