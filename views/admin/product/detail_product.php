@@ -11,7 +11,7 @@ require_once './views/admin/header.php';
         <link rel="stylesheet" href="./views/admin/css/style.css">
         <div class="container">
             <div class="product-img">
-                <img src="<?= $product['img'] ?>" alt="<?= $product['pro_name'] ?>">
+                <img src="http://localhost/tnshop_ngoc/<?= $product['img'] ?>" alt="<?= $product['pro_name'] ?>" style="width: 100px;">
             </div>
             <div class="product-info">
                 <h1><?= $product['pro_name'] ?></h1>
