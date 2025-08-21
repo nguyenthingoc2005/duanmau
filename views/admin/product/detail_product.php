@@ -16,8 +16,8 @@ require_once './views/admin/header.php';
             <div class="product-info">
                 <h1><?= $product['pro_name'] ?></h1>
                 <div>
-                    <span class="price"><?= number_format($product['price'] - $product['sale'], 2) ?>>đ</span>
-                    <span class="old_price"><?= number_format($product['price'], 2) ?>>đ</span>
+                    <span class="price"><?= number_format($product['price'] - $product['sale'], 2) ?>đ</span>
+                    <span class="old_price"><?= number_format($product['price'], 2) ?>đ</span>
                 </div>
                 <div class="quantity">Số lượng: <?= $product['quantity'] ?></div>
                 <div class="status">
